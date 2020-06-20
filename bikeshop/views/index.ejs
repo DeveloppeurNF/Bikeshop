@@ -38,12 +38,22 @@
         %>
             <div class="col-12 col-lg-4" style="width: 18rem;">
                 <div class="card">
-                    <img src="../images/<%= dataBikes[i].image %>" class="card-img-top" alt="bike-picture">
-                    <h5 class="card-title text-center"><%= dataBikes[i].name %></h5>
-                    <div class="card-body d-flex justify-content-center align-middle" style="display: flex; align-items: center;">
-                        <p class="card-text" style="margin: unset;"><%= dataBikes[i].price %>€</p>
-                        <a href="shop" style="margin-left: 2px;" type="button" class="btn btn-outline-primary">Acheter</a>
-                    </div>
+
+                    <form action="/shop" method="post">
+                    
+                        <img name="image" src="../images/<%= dataBikes[i].image %>" class="card-img-top" alt="bike-picture">
+                        <h5 name="name" class="card-title text-center"><%= dataBikes[i].name %></h5>
+                        <div class="card-body d-flex justify-content-center align-middle" style="display: flex; align-items: center;">
+                            <p name="price" value="<%=dataBikes[i].price%>" class="card-text" style="margin: unset;"><%= dataBikes[i].price %>€</p>
+                            
+                            <input type="hidden" name="name" value="<%=dataBikes[i].name%>"/>
+
+                            <input type="submit" style="margin-left: 2px;" type="button" class="btn btn-outline-primary"></input>
+                        </div>
+                    
+                    </form>
+
+
                 </div>
             </div>
         <%
