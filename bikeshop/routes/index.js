@@ -41,7 +41,9 @@ router.post('/update', function(req,res,next){
     }else{
 
       if (article.name == req.body.name){
-        article.quantity = req.body.quantity;
+
+        article.quantity = parseInt(req.body.quantity);
+        // récupère la donné du front et la transforme en nombre pour définir la nouvelle quantité.
       }
     }
   });
@@ -118,6 +120,12 @@ dataCardBike.forEach(article => {
 
 res.render('shop', { title: 'Express',dataCardBike,totalCardBike });
 });
+
+
+
+
+
+
 
 // ----------------------------------------->
 // Supprimer un Vélo du panier
