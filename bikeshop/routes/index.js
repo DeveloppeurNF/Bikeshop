@@ -1,5 +1,4 @@
 var express = require('express');
-const cookieParser = require('cookie-parser');
 var router = express.Router();
 
 // Declaration datas vélos
@@ -30,21 +29,29 @@ router.get('/', function(req, res, next) {
 
 router.post('/update', function(req,res,next){
 
-  console.log(req.body);
+// Regex sur l'input pour y trouver un charactère n'étant pas un Nombre
+  const checkanystring = /\D/g.test(req.body.quantity);
   
   dataCardBike.forEach(article => {
-    if (article.name == req.body.name){
-      article.quantity = req.body.quantity;
+    
+    if (req.body.quantity < 1 || checkanystring === true ){
+
+      console.log("Saisie invalide");
+
+    }else{
+
+      if (article.name == req.body.name){
+        article.quantity = req.body.quantity;
+      }
     }
   });
 
  // ----------------------------------------->
 // Sommes du panier
-var totalCardBike = 0
+var totalCardBike = 0;
 
 dataCardBike.forEach(article => {
   
-  console.log("console.log() dans sommes du panier de article"+article);
   totalCardBike += article.price*article.quantity;
   
 });
@@ -63,7 +70,7 @@ res.render('shop', { title: 'Express',dataCardBike,totalCardBike });;
 // Ajout du produit selectionné dans le panier 
 router.post('/shop', function(req, res, next) {
   
-  var newproduct = req.body
+  var newproduct = req.body;
   
   // Check si le produit qu'on ajoute est en doublons
   var doublons = false;
@@ -72,7 +79,7 @@ router.post('/shop', function(req, res, next) {
     //Si c'est le cas alors informer la mechanique que ça l'est et ajouter +1 en quantité
     if(product.name == newproduct.name){
       doublons = true;
-      product.quantity+=1
+      product.quantity+=1;
     }
   });
   
@@ -89,7 +96,7 @@ router.post('/shop', function(req, res, next) {
         addproduct.price = product.price;
         addproduct.quantity = 1;
         
-        dataCardBike.push(addproduct)
+        dataCardBike.push(addproduct);
         addedproduct = true;
       }
     });
