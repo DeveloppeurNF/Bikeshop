@@ -57,9 +57,17 @@
   <p class="col-1 m-auto">Suppr</p>
 
 </div>
+<!-------------------------------------  -->
+<!-- Si le panier est vide alors ignorer -->
+<% if(dataCardBike.length<1){ %>
+  <p class=" col-12 m-unset mt-auto mb-auto text-danger font-italic font-weight-bold">Aucun produit dans le panier</p>
+  <%}else{%>
+<!-------------------------------------  -->
+<!-- Si le panier est vide alors ignorer -->
 
+<!-------------------------------------  -->
 <!-- Contenue du panier -->
-<% 
+<%
 for (var i = 0; i<dataCardBike.length; i++){
 %>
 
@@ -89,10 +97,9 @@ for (var i = 0; i<dataCardBike.length; i++){
   <%
 }
 %>
-
-
 <!-- Contenue du panier -->
 
+<!-------------------------------------  -->
 <!-- Total -->
 <div class="Container-fluid col-12 d-flex ">
   
@@ -100,13 +107,18 @@ for (var i = 0; i<dataCardBike.length; i++){
     <p class="col-1"><%= totalCardBike%>€</p>
 </div>
 <!-- Total -->
+<!-------------------------------------  -->
 
+<!-------------------------------------  -->
 <!-- Acheter -->
 <div class="Container-fluid col-12 d-flex">
   <button type="button" class="offset-11 btn btn-outline-primary">Checkout</button>
 
 </div>
+<!-- Acheter -->
+<!-------------------------------------  -->
 
+<%}%>
  <!-- scripts -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.jintegrity="sha384-q8+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizcrossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
